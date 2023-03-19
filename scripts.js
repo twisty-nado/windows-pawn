@@ -52,6 +52,11 @@ function helpError() {
         x: "center",
         y: "center",
         bottom: 29,
+        class: [
+            "no-resize",
+            "no-max",
+            "no-min"
+        ],
         html: '<div style="position: absolute; left: 50px"><img draggable="false" src="https://win98icons.alexmeub.com/icons/png/msg_error-0.png" style="position: absolute; left: -43px; top: 12px;"><p>C:\\WINDOWS\\WHELP.EXE<br><br>A device attached to the system is not functioning.</p><br><button onclick="buttons.close()" style="margin-left: 135px">OK</button></div>',
     });
     window.buttons = {
