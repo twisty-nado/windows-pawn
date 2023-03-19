@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="scripts.js"></script>
+    <script src="winbox.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <title>Windows Pawn</title>
+</head>
+<body onload="start()">
+    <div id="desktop" onclick="hideStart()">
+
+    </div>
+    <div id="tbar">
+        <button id="start" onclick="start()"></button>
+        <div id="startMenu">
+            <div id="startInner">
+                <div id="startOption" class="logoffI" onclick="hideStart()">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>L</u>og Off...
+                </div>
+                <div id="startOption" class="shutdownI" onclick="shutDownBox(), hideStart()">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sh<u>u</u>t Down...
+                </div>
+            </div>
+            <div id="startLabel"><p style="font-weight:bold; transform: rotateZ(-90deg); color: white; position: absolute; bottom: 24px; left: -16.5px; font-size: 14px">Windows</p><p style="position: absolute; bottom: 76px; left: 0px; transform: rotateZ(-90deg); color: white; font-size: 14px">Pawn</p></div>
+        </div>
+    </div>
+</body>
+</html>

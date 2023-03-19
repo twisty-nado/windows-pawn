@@ -1,0 +1,293 @@
+﻿body, html
+{
+    width: 100%;
+    height: 100%;
+    font-family: "Pixelated MS Sans Serif";
+    background-color: #592a6f;
+    margin: 0;
+    user-select: none;
+    font-size: 11px;
+}
+
+#desktop{
+    width: 100%;
+    height: calc(100% - 29px);
+}
+
+#tbar {
+    position: absolute;
+    width: 100%;
+    height: 29px;
+    bottom: 0;
+    background-color: #c0c0c0;
+    box-shadow: inset 0px 2px #fff;
+}
+
+#start {
+    width: 60px;
+    min-width: 0px;
+    margin-left: 2px;
+    margin-top: 3px;
+    font-weight: bold;
+    background-image: url("Assets/start-button.png");
+    background-repeat: no-repeat;
+    background-position: 6px 4px;
+}
+
+#startMenu {
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;
+    width: 200px;
+    height: 350px;
+    background-color: #c0c0c0;
+    position: absolute;
+    bottom: 29px;
+    display: none;
+    z-index: 10000000000000000000000000000000000
+}
+
+.active {
+    box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
+}
+
+#startLabel {
+    background: linear-gradient(180deg, hsla(240, 100%, 24%, 1) 62%, hsla(240, 100%, 50%, 1) 100%);
+    width: 25px;
+    height: calc(100% - 8px);
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+#startInner{
+    width: calc(100% - 38px);
+    height: calc(100% - 8px);
+    background-color: none;
+    position:absolute;
+    left: 33px;
+    top: 4px;
+}
+
+#startOption {
+    font-family: "Pixelated MS Sans Serif";
+    background-color: none;
+    width: 100%;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+    text-align: left;
+    line-height: 35px;
+    font-size: 11px;
+}
+
+.shutdownI {
+    background-image: url("https://win98icons.alexmeub.com/icons/png/shut_down_normal-0.png");
+    background-size: 36px;
+    image-rendering: pixelated;
+}
+
+.logoffI {
+    background-image: url("https://win98icons.alexmeub.com/icons/png/key_win-4.png");
+    background-size: 36px;
+    image-rendering: pixelated;
+}
+
+p {
+    font-family: "Pixelated MS Sans Serif";
+    font-size: 11px;
+}
+
+button{
+    font-size: 11px;
+}
+
+:root {
+    /* Color */
+    --text-color: #222222;
+    --surface: #c0c0c0;
+    --button-highlight: #ffffff;
+    --button-face: #dfdfdf;
+    --button-shadow: #808080;
+    --window-frame: #0a0a0a;
+    --dialog-blue: #000080;
+    --dialog-blue-light: #1084d0;
+    --dialog-gray: #808080;
+    --dialog-gray-light: #b5b5b5;
+    --link-blue: #0000ff;
+    /* Spacing */
+    --element-spacing: 8px;
+    --grouped-button-spacing: 4px;
+    --grouped-element-spacing: 6px;
+    --radio-width: 12px;
+    --checkbox-width: 13px;
+    --radio-label-spacing: 6px;
+    --range-track-height: 4px;
+    --range-spacing: 10px;
+    /* Some detailed computations for radio buttons and checkboxes */
+    --radio-total-width-precalc: var(--radio-width) + var(--radio-label-spacing);
+    --radio-total-width: calc(var(--radio-total-width-precalc));
+    --radio-left: calc(-1 * var(--radio-total-width-precalc));
+    --radio-dot-width: 4px;
+    --radio-dot-top: calc(var(--radio-width) / 2 - var(--radio-dot-width) / 2);
+    --radio-dot-left: calc( -1 * (var(--radio-total-width-precalc)) + var(--radio-width) / 2 - var( --radio-dot-width ) / 2 );
+    --checkbox-total-width-precalc: var(--checkbox-width) + var(--radio-label-spacing);
+    --checkbox-total-width: calc(var(--checkbox-total-width-precalc));
+    --checkbox-left: calc(-1 * var(--checkbox-total-width-precalc));
+    --checkmark-width: 7px;
+    --checkmark-top: 3px;
+    --checkmark-left: 3px;
+    /* Borders */
+    --border-width: 1px;
+    --border-raised-outer: inset -1px -1px var(--window-frame), inset 1px 1px var(--button-highlight);
+    --border-raised-inner: inset -2px -2px var(--button-shadow), inset 2px 2px var(--button-face);
+    --border-sunken-outer: inset -1px -1px var(--button-highlight), inset 1px 1px var(--window-frame);
+    --border-sunken-inner: inset -2px -2px var(--button-face), inset 2px 2px var(--button-shadow);
+    /* Window borders flip button-face and button-highlight */
+    --border-window-outer: inset -1px -1px var(--window-frame), inset 1px 1px var(--button-face);
+    --border-window-inner: inset -2px -2px var(--button-shadow), inset 2px 2px var(--button-highlight);
+    /* Field borders (checkbox, input, etc) flip window-frame and button-shadow */
+    --border-field: inset -1px -1px var(--button-highlight), inset 1px 1px var(--button-shadow), inset -2px -2px var(--button-face), inset 2px 2px var(--window-frame);
+    /* Tabs */
+    --border-tab: inset -1px 0 var(--window-frame), inset 1px 1px var(--button-face), inset -2px 0 var(--button-shadow), inset 2px 2px var(--button-highlight)
+}
+
+.winbox:not(.max) .wb-header {
+    cursor: default;
+    background-color: #000080;
+    height: 20px;
+    line-height: 20px;
+    font-family: "Pixelated MS Sans Serif";
+    font-size: 10px;
+    width: calc(100% - 7px);
+    margin: 3px;
+}
+
+.wb-header {
+    cursor: default;
+    background: linear-gradient(90deg,navy,#1084d0);
+    height: 20px;
+    line-height: 20px;
+    font-family: "Pixelated MS Sans Serif";
+    font-size: 10px;
+    width: 100%;
+    margin: 0px;
+}
+
+.wb-icon{
+    width: 16px;
+    height: 14px;
+    cursor: default;
+    margin-top: 2px;
+    left: -4px;
+    position: relative;
+}
+
+.wb-drag {
+    cursor: default;
+}
+
+.wb-title {
+    cursor: default;
+    height: 20px;
+    line-height: 20px;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    font-weight: bold;
+    font-size: 11px;
+    left: -8px;
+    position: relative;
+}
+
+.winbox:not(.max) .wb-title {
+    cursor: default;
+    height: 20px;
+    line-height: 20px;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.winbox:not(.max) .wb-body {
+    top: 26px;
+    margin: 4px;
+    background-color: #c0c0c0;
+}
+
+.wb-body {
+    top: 20px;
+    margin: 0px;
+    background-color: #c0c0c0;
+}
+
+.winbox:not(.max) {
+    background-color: #c0c0c0;
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff;
+}
+
+.wb-close {
+    width: 16px;
+    height: 14px;
+    background-image: url("Assets/close.svg");
+    background-size: 8px;
+    background-position-x: 4px;
+    background-position-y: 3px;
+    margin-right: 3px;
+    margin-top: 3px;
+    background-color: #c0c0c0;
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+}
+
+    .wb-close:active {
+        box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
+    }
+
+.winbox:not(.max) .wb-max {
+    width: 16px;
+    height: 14px;
+    background-image: url("Assets/maximize.svg");
+    background-size: 9px;
+    background-position-x: 3px;
+    background-position-y: 2px;
+    background-color: #c0c0c0;
+    margin-right: 2px;
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+}
+
+.winbox:not(.max) .wb-max:active {
+    box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
+}
+
+.winbox:not(.focus) .wb-header {
+    background: linear-gradient(90deg,grey,#b5b5b5);
+}
+
+.winbox:not(.focus) .wb-title{
+    background: none;
+}
+
+.wb-max {
+    width: 16px;
+    height: 14px;
+    background-image: url("Assets/restore.svg");
+    background-size: 8px;
+    background-position-x: 3px;
+    background-position-y: 2px;
+    background-color: #c0c0c0;
+    margin-right: 2px;
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+}
+.wb-max:active {
+    box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
+}
+
+.wb-min {
+    width: 16px;
+    height: 14px;
+    background-image: url("Assets/minimize.svg");
+    background-size: 6px;
+    background-position-y: 8px;
+    background-position-x: 4px;
+    background-color: #c0c0c0;
+    box-shadow: inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+}
+
+.wb-min:active {
+    box-shadow: inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey;
+}
