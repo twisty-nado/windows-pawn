@@ -13,6 +13,20 @@ function showBox() {
     });
 }
 
+function showPaintBox() {
+    new WinBox({
+        root: document.getElementById("desktop"),
+        title: "Microsoft Paint",
+        icon: "https://mspaint.humanhead.com/images/icons/16.png",
+        url: "https://jspaint.app/",
+        width: "900px",
+        height: "600px",
+        x: "center",
+        y: "center",
+        bottom: 29
+    });
+}
+
 function shutDownBox() {
     var shutdownwindowsbox = new WinBox("Shut Down Windows", {
         root: document.getElementById("desktop"),
