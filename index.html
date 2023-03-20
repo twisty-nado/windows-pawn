@@ -4,56 +4,89 @@
     <script src="scripts.js"></script>
     <script src="winbox.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://unpkg.com/dragselect@latest/dist/DragSelect.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <title>Windows Pawn</title>
-</head>
-<body onload="start()">
-    <div id="desktop" onclick="hideStart()">
+    <script type="module">
+        import DragSelect from 'https://unpkg.com/dragselect@latest/dist/ds.es6m.min.js'
+        // the dragSelect is constrained within the red border container in the middle of the screen. You can scroll the container
 
+        new DragSelect({
+            selectables: document.querySelectorAll('#selectable'),
+            area: document.querySelector('#desktop')
+        });
+
+    </script>
+</head>
+<body onload="start(), removeDraggerBGandBorder()">
+    <div id="backstore" style="display: none">
+        <div id="shutdownHTML" style="position: absolute; left: 50px"><img draggable="false" src="https://win98icons.alexmeub.com/icons/png/shut_down_with_computer-0.png" style="position: absolute; left: -43px; top: 12px;"><p>What do you want the computer to do?</p><div class="field-row"><input type="radio" id="StandBy" name="ex"><label for="StandBy">S<u>t</u>and By</label></div><div class="field-row"><input type="radio" id="ShutDown" name="ex" checked><label for="ShutDown"><u>S</u>hut Down</label></div><div class="field-row"><input type="radio" id="Restart" name="ex"><label for="Restart"><u>R</u>estart</label></div><div class="field-row"><input type="radio" id="RestartMSDOS" name="ex"><label for="RestartMSDOS">Restart in <u>&nbsp;M</u>S-DOS mode</label></div><br><br><button onclick="buttons.close()">OK</button><button style="margin-left: 6px;" onclick="buttons.close()">Cancel</button><button style="margin-left: 6px;" onclick="buttons.close(); help()"><u>H</u>elp</button></div>
+    </div>
+    <div id="desktop" onclick="hideStart()">
+        <div id="selectable" style="transform: translate3d(0px, 0px, 1px);">
+            <img draggable="false" src="https://win98icons.alexmeub.com/icons/png/computer_explorer-5.png" style="position: relative; left: 50%; transform: translateX(-50%);" width="32" height="32" />
+            <div style="color: white; text-align: center; font-family: 'Pixelated MS Sans Serif'; width: 100%">My Computer</div>
+        </div>
+        <div id="selectable" style="transform: translate3d(0px, 0px, 1px);">
+            <img draggable="false" src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" style="position: relative; left: 50%; transform: translateX(-50%);" width="32" height="32" />
+            <div style="color: white; text-align: center; font-family: 'Pixelated MS Sans Serif'; width: 100%">My Documents</div>
+        </div>
+        <div id="selectable" style="transform: translate3d(0px, 0px, 1px);">
+            <img draggable="false" src="https://win98icons.alexmeub.com/icons/png/network_normal_two_pcs-5.png" style="position: relative; left: 50%; transform: translateX(-50%);" width="32" height="32" />
+            <div style="color: white; text-align: center; font-family: 'Pixelated MS Sans Serif'; width: 100%">Network Neighborhood</div>
+        </div>
+        <div id="selectable" style="transform: translate3d(0px, 0px, 1px);">
+            <img draggable="false" src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-4.png" style="position: relative; left: 50%; transform: translateX(-50%);" width="32" height="32" />
+            <div style="color: white; text-align: center; font-family: 'Pixelated MS Sans Serif'; width: 100%">Recycle Bin</div>
+        </div>
+        <div id="selectable" style="transform: translate3d(0px, 0px, 1px);">
+            <img draggable="false" src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" style="position: relative; left: 50%; transform: translateX(-50%);" width="32" height="32" />
+            <div style="color: white; text-align: center; font-family: 'Pixelated MS Sans Serif'; width: 100%">Online Services</div>
+        </div>
     </div>
     <div id="tbar">
         <button id="start" onclick="start()"></button>
         <div id="startMenu">
             <div id="startInner">
-                <div id="startOption" class="wupdateI" onclick="hideStart()">
+                <div id="startOption" class="wupdateI" onclick="hideStart(), UnspecifiedError()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows Update
                 </div>
                 <div id="startOption" class="paintI" onclick="hideStart(), showPaintBox()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Paint
                 </div>
                 <div id="block"></div>
-                <div id="startOption" class="programsI" onclick="hideStart()">
+                <div id="startOption" class="programsI" onclick="hideStart(), UnspecifiedError()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>P</u>rograms
                 </div>
-                <div id="startOption" class="favI" onclick="hideStart()">
+                <div id="startOption" class="favI" onclick="hideStart(), UnspecifiedError()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F<u>a</u>vorites
                 </div>
-                <div id="startOption" class="documentsI" onclick="hideStart()">
+                <div id="startOption" class="documentsI" onclick="hideStart(), UnspecifiedError()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>D</u>ocuments
                 </div>
-                <div id="startOption" class="settingsI" onclick="hideStart()">
+                <div id="startOption" class="settingsI" onclick="hideStart(), UnspecifiedError()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>S</u>ettings
                 </div>
-                <div id="startOption" class="findI" onclick="hideStart()">
+                <div id="startOption" class="findI" onclick="hideStart(), UnspecifiedError()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>F</u>ind
                 </div>
                 <div id="startOption" class="helpI" onclick="help(), hideStart()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>H</u>elp
                 </div>
-                <div id="startOption" class="runI" onclick="hideStart()">
+                <div id="startOption" class="runI" onclick="hideStart(), UnspecifiedError()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>R</u>un...
                 </div>
                 <div id="block"></div>
-                <div id="startOption" class="logoffI" onclick="hideStart()">
+                <div id="startOption" class="logoffI" onclick="hideStart(), logOffBox()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>L</u>og Off...
                 </div>
                 <div id="startOption" class="shutdownI" onclick="shutDownBox(), hideStart()">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sh<u>u</u>t Down...
                 </div>
             </div>
-            <div id="startLabel"><p style="font-weight:bold; transform: rotateZ(-90deg); color: white; position: absolute; bottom: 24px; left: -16.5px; font-size: 14px">Windows</p><p style="position: absolute; bottom: 76px; left: 0px; transform: rotateZ(-90deg); color: white; font-size: 14px">Pawn</p></div>
+            <div id="startLabel" ondblclick="UnspecifiedErrorSpam()"><p style="font-weight:bold; transform: rotateZ(-90deg); color: white; position: absolute; bottom: 24px; left: -16.5px; font-size: 14px">Windows</p><p style="position: absolute; bottom: 76px; left: 0px; transform: rotateZ(-90deg); color: white; font-size: 14px">Pawn</p></div>
         </div>
     </div>
 </body>
